@@ -10,7 +10,7 @@ class Index extends controller
 
     public function index()
     {
-
+        echo 123;
     }        
 
     public function regist()
