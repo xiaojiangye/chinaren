@@ -121,6 +121,14 @@ return [
     // 全局请求缓存排除规则
     'request_cache_except'   => [],
 
+    // 视图输出字符串内容替换
+    'view_replace_str'       => [
+        '__CSS__' => '/static/css/',
+        '__IMAGE__' => '/static/image/',
+        '__JS__' => '/static/js/',
+        '__UEDITOR__' => '/static/vendor/'
+    ],
+
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => Env::get('think_path') . 'tpl/dispatch_jump.tpl',
     'dispatch_error_tmpl'    => Env::get('think_path') . 'tpl/dispatch_jump.tpl',
