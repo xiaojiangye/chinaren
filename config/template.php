@@ -33,7 +33,7 @@ return [
     //视图输出字符串内容替换
     'tpl_replace_string' => [
         '__CSS__' => '/static/css/',
-        '__JS__'  => '/static/script/',
+        '__JS__'  => '/static/scripts/',
         '__IMAGE__' => '/static/img/',
         '__VENDOR__' => '/static/vendor/',
     ],
