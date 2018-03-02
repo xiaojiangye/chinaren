@@ -1,0 +1,39 @@
+<html>
+{include file='public/head' /}
+<body>
+    <div id="wrapper">  
+        {include file='public/nav' /}
+        {include file='public/left' /}
+        <div id="page-wrapper" style="border:1px solid red;">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">添加版块</div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>版块名称</label>
+                                <input class="form-control" type="text">
+                                <p class="help-block">Help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <label>版块父级</label>
+                                <select class="form-control">
+                                    <option>无</option>
+                                    <option>1</option>
+                                </select>
+                                <p class="help-block">Help text here.</p>
+                            </div>       
+                            <div class="form-group">
+                                <label>版块描述</label>
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info">Send Message </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{include file='public/js' /}

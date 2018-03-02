@@ -32,9 +32,9 @@ return [
     'taglib_end'   => '}',
     //视图输出字符串内容替换
     'tpl_replace_string' => [
-        '__CSS__' => '/static/css/',
-        '__JS__'  => '/static/scripts/',
-        '__IMAGE__' => '/static/img/',
-        '__VENDOR__' => '/static/vendor/',
+        '__CSS__' => '/static/assets/css/',
+        '__JS__'  => '/static/assets/js/',
+        '__IMG__' => '/static/assets/img/',
+        '__FONTS__' => '/static/assets/fonts/',
     ],
 ];
