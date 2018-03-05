@@ -1,0 +1,163 @@
+<html>
+{include file='public/head' /}
+<body>
+    <div id="wrapper">  
+        {include file='public/nav' /}
+        {include file='public/left' /}
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">添加版块</div>
+                        <div class="panel-body">
+                            <!-- <form role="form" method="post" action="{ // :url('Section/updateSection')}"> -->
+                                <div class="form-group">
+                                    <label>版块名称</label>
+                                    <input name='name' class="form-control" type="text" required>
+                                    <p class="help-block">Help text here.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>版块父级</label>
+                                    <select id='parent' class="form-control">
+                                        <option>无</option>
+                                        <option>1</option>
+                                    </select>
+                                    <p class="help-block">Help text here.</p>
+                                </div>       
+                                <div class="form-group">
+                                    <label>版块描述</label>
+                                    <textarea id='description' class="form-control" rows="3" required></textarea>
+                                </div>
+                                <input type='hidden' name='type' value="add"/>
+                                <input type="button" class="btn btn-info" id='submit' data-toggle="modal" data-target="#myModal" value="添加版块">
+                            <!-- </form> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">添加版主</div>
+                        <div class="panel-body">
+                            <!-- <form role="form" method="post" action="{ // :url('Section/updateSection')}"> -->
+                                <div class="form-group">
+                                    <label>版块名称</label>
+                                    <input name='name' class="form-control" type="text" required>
+                                    <p class="help-block">Help text here.</p>
+                                </div>   
+                                <div class="form-group">
+                                    <label>版主</label>
+                                    <textarea id='description' class="form-control" rows="3" required></textarea>
+                                </div>
+                                <input type='hidden' name='type' value="add"/>
+                                <input type="button" class="btn btn-info" id='submit' value="添加版主">
+                            <!-- </form> -->
+                        </div>
+                    </div>
+                </div>
+
+{include file='public/green' /}
+
+
+                <div class="col-md-12">
+                    <div class="panel panel-primary">
+                    <div class="panel-heading">版块记录</div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>ID</th>
+                                    <th>父版块</th>
+                                    <th>名称</th>
+                                    <th>版主</th>
+                                    <th>描述</th>
+                                    <th>创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {if !empty($section)}
+                                {volist name="section" id='vo'}
+                                <tr class="list-group-item-success">
+                                    <td><input type="checkbox" value=""></td>
+                                    <td>{$vo['id']}</td>
+                                    <td>{$vo['parent']}</td>
+                                    <td>{$vo['name']}</td>
+                                    <td>{$vo['sector']}</td>
+                                    <td>{$vo['description']}</td>
+                                    <td>{$vo['create_time']}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-yellow ">添加版主</a>
+                                        <button class="btn btn-primary hid" data-toggle="modal" data-target="#myModal">隐藏</button>
+                                        <input type='hidden' name='id' value="{$vo['id']}" /> 
+                                        <button class="btn btn-danger del">删除</button>
+                                    </td>
+                                </tr>
+                                {/volist}
+                                {/if}
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>   
+    </div>
+</body>
+</html>
+{include file='public/js' /}
+<script>
+    $(function(){
+        $("#submit").click(function(){
+            var name = $("input[name=name]").val();
+            var parent = $("#parent").val();
+            var description = $("#description").val();
+            var type = $("input[name=type]").val();
+            $.post("{:url('Section/updateSection')}",{name:name,parent:parent,description:description,type:type},function(res){
+                if(res == 401){
+                    //alert('参数不正确!请填写');
+                    $("#green").html('参数不正确,请重写!');
+                } else if(res == 601){
+                    //alert('数据库插入失败!');
+                    $("#green").html('数据库插入失败!');
+                } else if(res == 200){
+                    //alert('添加成功!');
+                    $("#green").html('添加成功!');                    
+                }
+            })
+        })
+
+        $(".hid").click(function(){
+            var id = $(this).next().val();
+            var type = 'hidden';
+            $.get("{:url('Section/dealSection')}",{id:id,type:type},function(res){
+                if(res == 401){
+                   // alert('参数不正确!');
+                   $("#green").html('参数不正确,请重写!');
+                } else if(res == 602){
+                    //alert('操作失败!');
+                    $("#green").html('隐藏失败!');
+                } else if(res == 200){
+                    //alert('操作成功!');
+                    $("#green").html('隐藏成功!');
+                }
+            })
+        })
+
+        $(".del").click(function(){
+            var id = $(this).prev().val();
+            var type = 'del';
+            $.get("{:url('Section/dealSection')}",{id:id,type:type},function(res){
+                if(res == 401){
+                    //alert('参数不正确!');
+                    $("#green").html('参数不正确,请重写!');
+                } else if(res == 602){
+                    //alert('操作失败!');
+                    $("#green").html('删除失败!');
+                } else if(res == 200){
+                    //alert('删除成功!');
+                    $("#green").html('删除成功!');
+                }
+            })
+        })
+
+
+    })
+</script>

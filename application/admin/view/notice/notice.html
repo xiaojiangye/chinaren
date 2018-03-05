@@ -1,0 +1,31 @@
+<html>
+    {include file='public/head' /}
+    <div id="wrapper">
+        {include file='public/nav' /}
+        {include file='public/left' /}
+        <div id='page-wrapper' style="border:1px solid red;">
+            <div class="row grids composer-grids">
+                <div class="col-md-8">
+                    <div class="panel panel-widget">
+                        <div class="compose-right widget-shadow">
+                            <div class="panel-default">
+                                <div class="panel-heading">发表公告</div>
+                                <div class="panel-body">
+                                    <div class="alert alert-info">
+                                        填写要发布的内容</div>
+                                    <form class="com-mail" action="{:url('Notice/pubNotice')}" method="post">
+                                        <input type="text" name="title" xsxdclass="form-control1 control3" placeholder="标题" required>
+                                        <br />
+                                        <textarea rows="6" name="content" class="form-control1 control2" placeholder="内容:" required></textarea>
+                                        <input type="submit" value="发布公告"> 
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+{include file='public/js' /}
