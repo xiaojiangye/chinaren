@@ -1,0 +1,28 @@
+<html>
+    {include file='public/head' /}
+    <div id="wrapper">
+        {include file='public/nav' /}
+        {include file='public/left' /}
+        <div id='page-wrapper' style="border:1px solid red;">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-widget">
+                        <div class="compose-right widget-shadow">
+                            <div class="panel-default">
+                                <div class="panel-heading">发表公告</div>
+                                <div class="panel-body">
+                                    <form class="com-mail" action="{:url('Notice/doPubNotice')}" method="post">
+                                        <input type="hidden" name='type' value="person" />
+                                        <textarea rows="6" name="content" class="form-control1 control2" placeholder="内容:" required></textarea>
+                                        <input type="submit" value="发布公告" /> 
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+{include file='public/js' /}

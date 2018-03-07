@@ -18,19 +18,20 @@ class Section extends Controller
     public function section()
     {
         $section = $this->section->getSection();
+        $parent = $this->section->getParentSection();
+        $this->assign('parent',$parent);
         $this->assign('section',$section);
         return $this->fetch();
     }
 
-    /*修改版块*/
+    /*修改  版块*/
     public function updateSection()
     {
         if(empty(Session::get('email')) || empty($_POST['name']) || empty($_POST['parent']) || empty($_POST['description']) || empty($_POST['type']))
         {
             return 401;
         }
-        $res = $this->section->updateSection($_POST);  
-        return $res;
+        return $this->section->updateSection($_POST);
     }
 
     /*删除版块 隐藏版块*/ 

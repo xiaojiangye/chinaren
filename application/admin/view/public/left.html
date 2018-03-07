@@ -4,11 +4,11 @@
         <ul class="nav" id="main-menu">
             <li>
                 <div class="user-img-div">
-                    <img src="assets/img/user.png" class="img-thumbnail" />
+                    <img src="{$Think.session.avatar}" class="img-thumbnail" />
                     <div class="inner-text">
-                        名字
+                        {$Think.session.name}
                     <br />
-                        <small>上次登录 : 2 Weeks Ago </small>
+                        <small>{$Think.session.last_login}</small>
                     </div>
                 </div>
             </li>
@@ -30,10 +30,10 @@
                 <a href="#"><i class="fa fa-desktop "></i>公告管理<span class="fa arrow"></span></a>
                  <ul class="nav nav-second-level">
                     <li>
-                        <a href="panel-tabs.html"><i class="fa fa-toggle-on"></i>系统公告</a>
+                        <a href="{:url('Notice/notice')}"><i class="fa fa-toggle-on"></i>系统公告</a>
                     </li>
                     <li>
-                        <a href="{:url('Notice/notice')}"><i class="fa fa-eyedropper ">发表公告</i></a>
+                        <a href="{:url('Notice/pubNotice')}"><i class="fa fa-eyedropper ">发表公告</i></a>
                     </li>
                     <li>
                         <a href="grid.html"><i class="fa fa-eyedropper ">用户文章</i></a>
@@ -89,7 +89,7 @@
                 </ul>
             </li>
             <li>
-                <a href="table.html"><i class="fa fa-flash "></i>会员管理</a>     
+                <a href="{:url('User/user')}"><i class="fa fa-flash "></i>会员管理</a>     
             </li>
             <li>
                 <a href="table.html"><i class="fa fa-flash "></i>站点管理</a>     

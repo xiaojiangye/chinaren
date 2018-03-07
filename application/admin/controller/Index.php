@@ -2,6 +2,7 @@
 namespace app\admin\controller;
 use think\Controller;
 use app\admin\model\User;
+use think\facade\Session;
 
 class Index extends controller
 {
@@ -28,7 +29,7 @@ class Index extends controller
         $res = $this->user->dologin($_POST);
         if($res == 200){
             return $this->redirect('Index/index');
-        } else if($res == 201){
+        } else if($res == 201 || $res == 202){
             return $this->redirect('Index/login');
         }
     }
@@ -41,6 +42,13 @@ class Index extends controller
     public function regist()
     {
         echo "后台的注册页面，应该用不着";
+    }
+
+    /*退出登录*/
+    public function exit()
+    {   
+        Session::clear();
+        return $this->redirect('Index/login');
     }
 }
 

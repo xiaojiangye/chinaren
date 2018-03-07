@@ -20,7 +20,11 @@
                                     <label>版块父级</label>
                                     <select id='parent' class="form-control">
                                         <option>无</option>
-                                        <option>1</option>
+                                        {if(!empty($parent))}
+                                        {foreach $parent as $key => $vo}
+                                        <option>{$vo}</option>
+                                        {/foreach}
+                                        {/if}
                                     </select>
                                     <p class="help-block">Help text here.</p>
                                 </div>       
@@ -54,10 +58,7 @@
                         </div>
                     </div>
                 </div>
-
-{include file='public/green' /}
-
-
+                
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                     <div class="panel-heading">版块记录</div>
@@ -98,6 +99,7 @@
                         </table>
                 </div>
             </div>
+            {include file='public/green' /}
         </div>   
     </div>
 </body>
@@ -111,6 +113,7 @@
             var description = $("#description").val();
             var type = $("input[name=type]").val();
             $.post("{:url('Section/updateSection')}",{name:name,parent:parent,description:description,type:type},function(res){
+                console.log(res);
                 if(res == 401){
                     //alert('参数不正确!请填写');
                     $("#green").html('参数不正确,请重写!');
@@ -150,6 +153,7 @@
                     $("#green").html('参数不正确,请重写!');
                 } else if(res == 602){
                     //alert('操作失败!');
+                    $("#green").attr("display","block");
                     $("#green").html('删除失败!');
                 } else if(res == 200){
                     //alert('删除成功!');

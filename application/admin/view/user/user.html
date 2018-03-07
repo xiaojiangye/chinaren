@@ -1,0 +1,50 @@
+<html>
+{include file='public/head' /}
+<body>
+    <div id="wrapper">  
+        {include file='public/nav' /}
+        {include file='public/left' /}
+        <div id="page-wrapper" style="border:1px solid red;">
+            <div class="row">
+                {if !empty($user)}
+                {volist name="user" id="vo"}
+                <div class="col-md-4 col-sm-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                           {$vo["json_extract(`info`, '$.name')"]} 
+                           <input type="hidden" name="id" value="{$vo['id']}" /> 
+                            {if ($vo["status"]==1)}
+                            <button class="btn btn-success deal" style="margin-left:72%;">禁用</button>
+                            {elseif ($vo['status'] == 0)}
+                            <button class="btn btn-danger deal" style="margin-left:72%;">启用</button>
+                            {/if}
+                            </button>   
+                        </div>
+                        <div class="panel-body" style="height:28%;">
+                            <img style="height:100%;" src="{$vo['avatar']}"/>
+                        </div>
+                    </div>
+                </div>
+                {/volist}
+                {/if}
+            </div>
+        </div>
+    </div>
+</body>
+{include file='public/js' /}
+<script>
+    $(function(){
+        $(".deal").click(function(){
+            var id = $(this).prev().val();
+            var status = $(this).text();
+            $.get("{:url('User/updateUserStatus')}",{id:id,status:status},function(res){
+                if(res == 200){
+                    console.log('启用成功!');
+                } else {
+                    console.log('其他状态码!');
+                }
+            })
+
+        })
+    })
+</script>
