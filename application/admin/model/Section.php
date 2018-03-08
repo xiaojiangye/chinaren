@@ -7,7 +7,7 @@ class Section extends Model
     /*得到所有版块*/
     public function getSection()
     {
-        return $this->where('status',1)->order('create_time desc')->select();
+        return $this->order('status desc')->order('create_time desc')->select();
     }
 
     /*得到所有父级版块*/
@@ -45,6 +45,8 @@ class Section extends Model
             $res = $this->save(['status' => 0],['id' => $info['id']]);
         } else if($info['type'] == 'del'){
             $res = $this->destroy($info['id']);
+        } else if($info['type'] == 'remove') {
+            $res = $this->save(['status' => 1],['id' => $info['id']]);
         }
         if(!$res)
         {

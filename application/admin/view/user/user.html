@@ -14,9 +14,9 @@
                            {$vo["json_extract(`info`, '$.name')"]} 
                            <input type="hidden" name="id" value="{$vo['id']}" /> 
                             {if ($vo["status"]==1)}
-                            <button class="btn btn-success deal" style="margin-left:72%;">禁用</button>
+                            <button class="btn btn-danger deal" style="margin-left:72%;">禁用</button>
                             {elseif ($vo['status'] == 0)}
-                            <button class="btn btn-danger deal" style="margin-left:72%;">启用</button>
+                            <button class="btn btn-success deal" style="margin-left:72%;">启用</button>
                             {/if}
                             </button>   
                         </div>
@@ -37,11 +37,20 @@
         $(".deal").click(function(){
             var id = $(this).prev().val();
             var status = $(this).text();
+            var obj = $(this);
             $.get("{:url('User/updateUserStatus')}",{id:id,status:status},function(res){
+                console.log(res);
                 if(res == 200){
-                    console.log('启用成功!');
+                    if(status == '启用')
+                    {
+                        obj.text('禁用');
+                        obj.addClass('btn-danger');
+                    } else if(status == '禁用'){
+                        obj.text('启用');
+                        obj.addClass('btn-success');  
+                    } 
                 } else {
-                    console.log('其他状态码!');
+                    alert('其他状态码的操作!');
                 }
             })
 

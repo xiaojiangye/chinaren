@@ -39,11 +39,6 @@ class Index extends controller
         return $this->fetch();
     }        
 
-    public function regist()
-    {
-        echo "后台的注册页面，应该用不着";
-    }
-
     /*退出登录*/
     public function exit()
     {   

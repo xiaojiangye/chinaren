@@ -8,8 +8,13 @@ class Index extends Controller
         echo "这里展示chinaren的登录页面";
     }
 
+    public function login()
+    {
+        return $this->fetch();
+    }
+
     public function regist()
     {
-        echo "这里显示注册页面";
+        return $this->fetch();
     }
 }
