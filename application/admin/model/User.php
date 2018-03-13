@@ -28,15 +28,33 @@ class User extends Model
         return $this->order('status desc')->order('create_time desc')->column('id,info->name,avatar,info->description,status');
     }
 
+    //用户注册
+    public function doRegist($info)
+    {
+        $information = json_encode(['sex' => 0,'name'=>$info['name'],'type' => 'user','description'=>'我是Chinaren的会员','integral' => 50]);
+        $res = $this->save([
+            'email' => $info['email'],
+            'pwd'   => $info['pwd'],
+            'info'  => $information,
+            'my_class'  => '[]',
+            'my_friend' => '[]',
+        ]);
+        if(!$res)
+        {
+            return 203;
+        }
+        return 200;
+    }
+
     /*验证登录*/
-    public function dologin($info)
+    public function doLogin($info)
     {
         $res = $this->where(['email' => $info['email'],'pwd' => $info['pwd']])->find();
         if(empty($res)){
             return  201;
         }
         $info  = json_decode($res['info'],true);
-        if($info['status'] == 0)
+        if($res['status'] == 0)
         {
             return 202;
         }
@@ -45,7 +63,7 @@ class User extends Model
         Session::set('id',$res['id']);
         Session::set('last_login',$res['last_login']);
         Session::set('name',$info['name']);
-        Session::set('avatar',$info['avatar']);
+        Session::set('avatar',$res['avatar']);
         return 200;
     }
 }

@@ -31,10 +31,14 @@ return [
     // 标签库标签结束标记
     'taglib_end'   => '}',
     //视图输出字符串内容替换
-    'tpl_replace_string' => [
-        '__CSS__' => '/static/assets/css/',
-        '__JS__'  => '/static/assets/js/',
-        '__IMG__' => '/static/assets/img/',
-        '__FONTS__' => '/static/assets/fonts/',
+    'tpl_replace_string'     => [
+        '__ADMIN_CSS__'      => '/static/admin/assets/css/',
+        '__ADMIN_JS__'       => '/static/admin/assets/js/',
+        '__ADMIN_IMG__'      => '/static/admin/assets/img/',
+        '__ADMIN_FONTS__'    => '/static/admin/assets/fonts/',
+        '__INDEX_CSS__'      => '/static/index/css/',
+        '__INDEX_JS__'       => '/static/index/js/',
+        '__INDEX_IMG__'      => '/static/index/images',
+        '__INDEX_PIC__'      =>  '/static/index/picture/',
     ],
 ];

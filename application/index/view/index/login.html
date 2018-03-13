@@ -1,39 +1,46 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="__CSS__login.css">
-    <script type="text/javascript" src="__JS__jquery.min.js"></script>
+{include file='public/css' /}
 </head>
-<body class="login_bj" style="border:1px solid red;">
-    <div class="zhuce_body">
-        <div class="logo"><a href="#"><img src="picture/logo.png" width="114" height="54" border="0"></a></div>
-        <div class="zhuce_kong login_kuang">
-            <div class="zc">
-                <div class="bj_bai">
-                <h3>登录</h3>
-                <form action="" method="get">
-                    <input name="" type="text" class="kuang_txt" placeholder="手机号">
-                    <input name="" type="text" class="kuang_txt" placeholder="密码">
-                    <div>
-                        <a href="#">忘记密码？</a><input name="" type="checkbox" value="" checked><span>记住我</span> 
-                    </div>
-                    <input name="登录" type="button" class="btn_zhuce" value="登录">
-                    
-                    </form>
-                </div>
-                <div class="bj_right">
-                    <p>使用以下账号直接登录</p>
-                    <a href="#" class="zhuce_qq">QQ注册</a>
-                    <a href="#" class="zhuce_wb">微博注册</a>
-                    <a href="#" class="zhuce_wx">微信注册</a>
-                    <p>已有账号？<a href="#">立即登录</a></p>
-                
-                </div>
-            </div>
-            <P>Diyhe.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎您定制盒子模型</P>
-        </div>
+<body>
+<div class="form-w3ls">
+    <ul class="tab-group cl-effect-4">
+        <li class="tab active"><a href="#signin-agile">登录</a></li>
+		<li class="tab"><a href="#signup-agile">注册</a></li>        
+    </ul>
+    <div class="tab-content">
+        <div id="signin-agile">   
+			<form action="{:url('Index/dologin')}" method="post">		
+				<p class="header">邮箱号</p>
+				<input type="text" name="email" placeholder="邮箱号">	
+				<p class="header">密码</p>
+				<input type="password" name="pwd" placeholder="密码">
+				<input type="submit" class="sign-in" value="登录">
+				<ul class="links">
+					<li class="pass-w3ls"><a href="#">忘记密码</a></li>
+				</ul>
+			</form>
+		</div>
+		<div id="signup-agile">   
+			<form action="{:url('Index/doRegist')}" method="post">
+				<p class="header">昵称</p>
+				<input type="text" name="name"  placeholder="昵称" required />
 
+				<p class="header">邮箱号</p>
+				<input type="email" name="email" placeholder="邮箱号" required />
+				
+				<p class="header">密码</p>
+				<input type="password" name="pwd"  placeholder="密码" required />
+				
+				<p class="header">确认密码</p>
+				<input type="password" name="rpwd"  placeholder="确认密码" required />
+				
+				<input type="submit" class="register" value="注册">
+			</form>
+		</div> 
     </div>
+</div> 
 </body>
 </html>
+{include file='public/js' /}

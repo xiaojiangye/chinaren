@@ -27,7 +27,12 @@
                                         {/if}
                                     </select>
                                     <p class="help-block">Help text here.</p>
-                                </div>       
+                                </div>
+                                <div class="form-group">
+                                        <label>版块地址</label>
+                                        <input name='url' class="form-control" type="text" required>
+                                        <p class="help-block">{:url('Index/index')}</p>
+                                    </div>       
                                 <div class="form-group">
                                     <label>版块描述</label>
                                     <textarea id='description' class="form-control" rows="3" required></textarea>
@@ -82,7 +87,7 @@
                                     <td>{$vo['parent']}</td>
                                     <td>{$vo['name']}</td>
                                     <td>{$vo['sector']}</td>
-                                    <td>{$vo['description']}</td>
+                                    <td>{$vo["json_extract(`info`, '$.description')"]}</td>
                                     <td>{$vo['create_time']}</td>
                                     <td>
                                         <a href="#" class="btn btn-yellow ">添加版主</a>
@@ -112,9 +117,10 @@
         $("#submit").click(function(){
             var name = $("input[name=name]").val();
             var parent = $("#parent").val();
+            var url = $("input[name=url]").val();
             var description = $("#description").val();
             var type = $("input[name=type]").val();
-            $.post("{:url('Section/updateSection')}",{name:name,parent:parent,description:description,type:type},function(res){
+            $.post("{:url('Section/updateSection')}",{name:name,parent:parent,url:url,description:description,type:type},function(res){
                 console.log(res);
                 if(res == 401){
                     //alert('参数不正确!请填写');

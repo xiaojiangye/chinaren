@@ -26,7 +26,7 @@ class Index extends controller
         {
             return $this->redirect('Index/login');
         }
-        $res = $this->user->dologin($_POST);
+        $res = $this->user->doLogin($_POST);
         if($res == 200){
             return $this->redirect('Index/index');
         } else if($res == 201 || $res == 202){
