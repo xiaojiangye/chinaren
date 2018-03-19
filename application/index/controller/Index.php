@@ -15,6 +15,12 @@ class Index extends Controller
         $this->section = new SectionModel();
     }
 
+    //渲染个人中心的页面
+    public function personal()
+    {
+        return $this->fetch();
+    }
+
     // 渲染首页
     public function index()
     {

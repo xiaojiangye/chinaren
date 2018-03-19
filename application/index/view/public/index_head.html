@@ -1,0 +1,53 @@
+<div class="pb-main pb-navwrap pb-after-clear">
+    <div class="pb-iblock pb-fl pb-logo">
+        <a href="{:url('Index/index')}"><img src="__INDEX_PIC__logo.jpg" alt=""/></a>
+    </div>
+    <div class="pb-iblock pb-fl pb-nav">
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="index.html">同学录</a></li>
+            <li><a href="index.html">班级</a></li>
+            <li><a href="index.html">好友</a></li>
+            <li><a href="index.html">足迹</a></li>
+            <li><a href="index.html">旧货市场</a></li>
+            <li><a href="index.html">公告</a></li>
+        </ul>
+    </div>
+    <div class="pb-iblock pb-fr pb-oths">
+        <a class="nmt" href="javascript:void(0);" onclick="Sys.commStat(2);
+commonLib.SetHome(this);">设为首页</a>
+        <a class="nmt" href="index.html" rel="sidebar" onclick="Sys.commStat(1);
+commonLib.addFavorite();">收藏我们</a>
+        <a class="nmt" href="suggest.html">投诉建议</a> &nbsp;
+        <span class="nmt"> | </span>
+        <div class="pb-ucenter pb-after-clear">
+            <div id="uMessageCenter">
+                <i class="pb-icons triangle"></i>
+                <a href="{:url('Index/personal')}" id="uSetEntry-head"><img src="__INDEX_PIC__default.gif" alt="阿斗" /></a>
+                <i class="pb-icons notice pb-hide"></i>
+            </div>
+            <br />
+            <ul>
+                <li><a href="{:url('Index/personal')}" id="uSetEntry"><i class="pb-icons my"></i> 个人中心</a></li>
+                <li><a href="/site/logout"><i class="pb-icons logout"></i> 退出登录</a></li>
+            </ul>
+        </div>
+        <br />
+        <form action="" onsubmit="W.tips('暂未开放搜索功能，敬请期待!');
+Sys.commStat(6);
+return false;">
+            <input class="pb-search-btn" type="submit" value="" />
+            <input class="pb-search" type="text" />
+        </form>
+    </div>
+</div>
+
+<div class="pb-main pb-mt10">
+    <div id="bSlideBox" class="pb-main slideBox" style="text-align:center;border:1px solid red;">
+        <!-- <ul class="items">
+            <li><a target="_blank" onclick="Sys.commStat(46);" href="http://www.sharesmile.cn/essay-9"><img src="__INDEX_PIC__banner_10001_3f4dac09bb.jpg" alt="开青想" /></a></li>
+            <li><a target="_blank" onclick="Sys.commStat(47);" href="http://www.sharesmile.cn/qing"><img src="__INDEX_PIC__banner_10001_300a22a90b.jpg" alt="倾听走走" /></a></li>
+        </ul> -->
+        留一个轮播图的位置
+    </div>
+</div>

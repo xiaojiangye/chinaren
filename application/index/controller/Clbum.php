@@ -1,12 +1,13 @@
 <?php
-
 namespace app\index\controller;
 use think\Controller;
 
-class Article extends Controller
+class Clbum extends Controller
 {
-    public function pubArticle()
+    public function myClass()
     {
         return $this->fetch();
     }
 }
+
+///Users/roronoa/Downloads

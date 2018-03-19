@@ -1,11 +1,10 @@
 <?php
-
 namespace app\index\controller;
 use think\Controller;
 
-class Article extends Controller
+class Space extends Controller
 {
-    public function pubArticle()
+    public function space()
     {
         return $this->fetch();
     }
